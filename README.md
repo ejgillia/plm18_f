@@ -3,6 +3,6 @@ Team F repository for CSC 495-002
 
 Esteller,Rafael
 
-Fernandez,Hanna
+Jones, Kenny
 
 Gilliam,Edward
