@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 suits = "C S D H".split(" ")
 ranks = [str(i) for i in range(2, 11)] + "J Q K A".split(" ")
 
