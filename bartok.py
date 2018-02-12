@@ -2,63 +2,80 @@ from Card import *
 import random
 
 def valid_move(card, stack):
-	
-	return not stack or card.suit == stack[-1].suit or card.rank == stack[-1].rank
+  
+  return not stack or card.suit == stack[-1].suit or card.rank == stack[-1].rank
 
 
 def handle_turn(hand, stack, deck, player = False):
-	acceptable = [card for card in hand if valid_move(card, stack)]
-	print(acceptable)
-
-	if len(acceptable) > 0:
-		if player:
-			pass
-			# TODO - logic to handle a player making a decision 
-		else:
-
-			tbr = acceptable[-1]
-			hand = [card for card in hand if card != tbr]
-			random.shuffle(hand)
-			stack.append(tbr)
-			print("You played {}".format(tbr))
-		
-	else:
-		print("Time to draw")
-		if not deck:
-			deck, stack = stack, deck
-			random.shuffle(deck)
-		hand.append(deck.pop())	
-	
-	return hand, stack, deck
-			
+  acceptable = [card for card in hand if valid_move(card, stack)]
+  print(acceptable)
+  if len(stack) > 0:
+    print("Top Card {}".format(stack[-1]))
+  
+  # printing cards for user to select
+  [print("Number {}  Card {}".format(index, card)) for index, card in enumerate(hand)]
+     
+  
+  
+  if (len(acceptable) > 0):
+    tbr = None
+    #print("test: " + str(not tbr))
+    while ( not tbr):
+      if player:
+        selected = 0
+        try:
+          selected = int(input("Input number of card to play: "))
+          tbr = hand[selected]
+          #print("tbr in acceptable: " + str(tbr in acceptable))
+          if tbr not in acceptable:
+            raise Exception("Invalid Play")
+        except:
+            print("Invalid selection")
+            tbr = None
+      else:
+        tbr = acceptable[-1]
+    hand = [card for card in hand if card != tbr]
+    random.shuffle(hand)
+    stack.append(tbr)
+    print("You played {}".format(tbr))
+    
+  else:
+    print("No moves available: Time to draw")
+    if not deck:
+      deck, stack = stack, deck
+      random.shuffle(deck)
+    hand.append(deck.pop())  
+  
+  return hand, stack, deck
+      
 
 
 if __name__ == "__main__":
-	num_players = 5
-	deck = [Card(rank, suit) for suit in suits for rank in ranks]
-	random.shuffle(deck)
-	stack = []
+  num_players = 5
+  deck = [Card(rank, suit) for suit in suits for rank in ranks]
+  random.shuffle(deck)
+  stack = []
 
-	if num_players * 7 >= len(deck):
-		raise ValueError("Too many players!")
+  if num_players * 7 >= len(deck):
+    raise ValueError("Too many players!")
 
-	hands = [[] for _ in range(num_players)]
-	
-	for i in range(num_players):
-		for _ in range(7): hands[i].append(deck.pop())
+  hands = [[] for _ in range(num_players)]
+  
+  for i in range(num_players):
+    for _ in range(7): hands[i].append(deck.pop())
 
-	stack.append(deck.pop())
+  stack.append(deck.pop())
 
-	going = True
-	while going:
-		for index, hand in enumerate(hands):
-			print("---")
-			print("I am player {}".format(index))
-			hands[index], stack, deck = handle_turn(hands[index], stack, deck)
-			if not hands[index]:
-				print("We have a winner! {}".format(index))
-				going = False
-				break
+  going = True
+  while going:
+    for index, hand in enumerate(hands):
+      print("---")
+      print("I am player {}".format(index))
+      hands[index], stack, deck = handle_turn(hands[index], stack, deck, index == 0)
+      if not hands[index]:
+        print("We have a winner! {}".format(index))
+        going = False
+        break
 
-	print("End of program!")
-	
+  print("End of program!")
+  
