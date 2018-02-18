@@ -1,14 +1,34 @@
 from Card import *
 import random
+import itertools
+
+def same_score(combo):
+  tbc = combo[0].score
+  for item in combo:
+    if item.score != tbc:
+      return False
+    
+  return True
+  
 
 
-def generate_moves(hand, num_cards_to_play):
+def generate_moves(hand, num_cards_to_play, last_score):
   if num_cards_to_play not in [1,2,3]:
     raise ValueError("Not a valid input - num_cards_to_play not in [1,2,3]")
 
   # remove twos
   cleaned = [card for card in hand if card.score != 2]
+  tbr = []
 
+  for combo in itertools.combinations(cleaned, num_cards_to_play):
+    if same_score(combo) and combo[0].score >= last_score:
+      tbr.append(combo)
+  
+  return tbr
+    
+    
+  
+  
 def valid_moves(hand, stack):
   # valid moves:
   # play a 2
@@ -18,23 +38,32 @@ def valid_moves(hand, stack):
 
 
   # twos are always a valid play, so I'm doing them out of the loop
-  valid = [card for card in hand if card.score == 2]
+  # I'm not telling you why this is a tuple to keep you on your toes xd
+  valid = [(card,) for card in hand if card.score == 2]
   
 
   
   if not stack:
     # all moves are valid
-    pass
+    for i in range(1, 4):
+      valid.extend(generate_moves(hand, i, 0))
 
   else:
     # number of cards previously put down in the last turn
     last_play = len(stack[-1])
     # SCORE of cards previously put down in last turn
     last_score = stack[-1][0].score
+    valid.extend(generate_moves(hand, last_play, last_score))
+    
+  meaningful_variable_name = sorted(valid, key = lambda x : x[0].score)
+    
+  print(meaningful_variable_name)
+  
+  return meaningful_variable_name
     
 
 if __name__ == "__main__":
-  num_players = 4
+  num_players = 5
   deck = [Card(rank, suit) for suit in suits for rank in ranks]
   random.shuffle(deck)
   stack = []
@@ -54,4 +83,6 @@ if __name__ == "__main__":
   for hand in hands:
     print(len(hand), hand)
 
-  valid_moves(hands[0], stack)
+  valid_moves(hands[0], [[Card("A", "H")]])
+  valid_moves(hands[0], [[Card("3", "H"), Card("3", "S")]])
+  valid_moves(hands[0], [[Card("3", "H"), Card("3", "S"), Card("3", "C")]])
