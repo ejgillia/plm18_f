@@ -86,9 +86,17 @@ def four_of_a_kind(stack: list, hand: list):
     missing = [card for card in hand if stack[-1][0].score == card.score]
     if len(missing) == 2:
       return missing, True
+  if in_play == 1:
+    # lord have mercy
+    stk = [card[0] for card in stack if card[0].score == stack[-1][0].score]
+    stlol = [card for card in hand if card.score == stack[-1][0].score]
+    if len(stk) + len(stlol) == 4:
+      print("yabba dabba ding dong")
+      return stk, True
+  
+  return False
     
-    
-    
+
 
 if __name__ == "__main__":
   num_players = 5
