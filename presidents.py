@@ -1,8 +1,9 @@
 from Card import *
 import random
 import itertools
+import typing
 
-def same_score(combo):
+def same_score(combo: list) -> bool:
   tbc = combo[0].score
   for item in combo:
     if item.score != tbc:
@@ -12,11 +13,10 @@ def same_score(combo):
   
 
 
-def generate_moves(hand, num_cards_to_play, last_score):
-  if num_cards_to_play not in [1,2,3]:
+def generate_moves(hand: list, num_cards_to_play: int, last_score: int) -> list:
+  if num_cards_to_play not in [1,2,3,4]:
     raise ValueError("Not a valid input - num_cards_to_play not in [1,2,3]")
 
-  # remove twos
   cleaned = [card for card in hand if card.score != 2]
   tbr = []
 
@@ -26,23 +26,12 @@ def generate_moves(hand, num_cards_to_play, last_score):
   
   return tbr
     
-    
-  
-  
-def valid_moves(hand, stack):
-  # valid moves:
-  # play a 2
-  # if empty or 1 card last on stack: play one card >= the stack card
-  # if empty or 2 cards last on stack: play two cards >= the stack cards
-  # if empty or 3 cards last on stack: play three cards >= the stack cards
 
+def valid_moves(stack: list, hand: list) -> list:
 
-  # twos are always a valid play, so I'm doing them out of the loop
-  # I'm not telling you why this is a tuple to keep you on your toes xd
   valid = [(card,) for card in hand if card.score == 2]
   
 
-  
   if not stack:
     # all moves are valid
     for i in range(1, 4):
@@ -56,10 +45,49 @@ def valid_moves(hand, stack):
     valid.extend(generate_moves(hand, last_play, last_score))
     
   meaningful_variable_name = sorted(valid, key = lambda x : x[0].score)
-    
-  print(meaningful_variable_name)
   
   return meaningful_variable_name
+
+def handle_turn(stack: list, hand: list, player = False):
+  allowed = valid_moves(stack, hand)
+  if len(allowed) == 0:
+    print("no moves")
+    return [], hand, True
+
+  if player:
+    pass #handle all that delicious input
+  else:
+    random.shuffle(allowed)
+  tbp = allowed.pop()
+  print("This was played", tbp, "on", stack)
+  stack += (tbp,)
+  if tbp[0].rank == "2": stack = []
+  hand = [card for card in hand if card not in tbp]
+
+
+  return stack, hand, False
+    
+  
+
+def four_of_a_kind(stack: list, hand: list):
+  # god forgive me
+  # just believe me: this works
+  # fenceposting
+  if not stack: return False
+  
+  in_play = len(stack[-1])
+  # easiest case first
+  if in_play == 3:
+    # do you have the fourth
+    missing = [card for card in hand if stack[-1][0].score == card.score]
+    if missing:
+      return missing, True
+  if in_play == 2:
+    missing = [card for card in hand if stack[-1][0].score == card.score]
+    if len(missing) == 2:
+      return missing, True
+    
+    
     
 
 if __name__ == "__main__":
@@ -79,10 +107,49 @@ if __name__ == "__main__":
       else:
         going = False
         break
+  
+  # ldoifygp9e8tdfg 
+  # enjoy debugging THIs
+  i = 0
+  while True:
+    print("current player {}".format(i))
+    xd = False
+    puppies = -1
+    lejfg = []
 
-  for hand in hands:
-    print(len(hand), hand)
+    for a in range(num_players):
+      b = four_of_a_kind(stack, hands[a])
+      if b:
+        xd = True
+        puppies = a
+        lejfg = b[0]
+        break
+    
+    if xd:
+      i = puppies
+      hands[puppies] = [card for card in hands[i] if card not in lejfg]
+      print("OOOOO BOY", puppies)
+      stack = []
+      continue
 
-  valid_moves(hands[0], [[Card("A", "H")]])
-  valid_moves(hands[0], [[Card("3", "H"), Card("3", "S")]])
-  valid_moves(hands[0], [[Card("3", "H"), Card("3", "S"), Card("3", "C")]])
+    stack, hands[i], flag = handle_turn(stack, hands[i], player = False)
+    if not hands[i]:
+      print("We has a winner!")
+      print("Player {}!".format(i))
+      break
+
+    if flag:
+      i = (i - 1) % num_players
+    else:
+      i = (i + 1) % num_players
+        
+    
+
+  
+
+
+
+
+
+
+
