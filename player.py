@@ -51,6 +51,7 @@ class Player(object):
       while True:
         try:
           sel = int(input("Input number of valid play to play: "))
+          
           if valid[sel][0].rank == '2':
             #if 2 was played stack is cleared and player plays again
             played = valid[sel]
@@ -59,8 +60,20 @@ class Player(object):
             #else next player respons
             played = valid[sel]
             next = self.next
+           
+          #removing played cards
+          hand = []
+          for st in self.hand:
+            newSt = []
+            for card in st:
+              if card not in played:
+                
+                newSt.append(card)
+            hand.append(newSt)
           
-          self.hand = [card for card in self.hand if not card == played]
+          
+          self.hand = [st for st in hand if st]
+         
           if played[0].rank == '2':
             played = []
           return played, next  
@@ -78,12 +91,16 @@ class Player(object):
   def getValid(self, prevPlay):
     valid = []
     for st in self.hand:
-      if len(st) > len(prevPlay):
+      if st[0].rank == '2':
+        [valid.append([card]) for card in st]
+      elif len(st) > len(prevPlay):
+        if not prevPlay or st[0] > prevPlay[0]:
+          [valid.append(st[0:i]) for i in range(len(prevPlay), len(st))]
         valid.append(st)
       elif len(st) == len(prevPlay) and st[0] > prevPlay[0]:
         valid.append(st)
-      elif st[0].rank == '2':
-        valid.append(st)
+    #this removes empty sets from valid that are added
+    valid = [i for i in valid if i]
     return valid
                
           
