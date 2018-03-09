@@ -3,6 +3,10 @@ import random
 import itertools
 import typing
 
+# global variables are a valid strategy
+total_turns = 0
+num_players = 5
+
 def same_score(combo: list) -> bool:
   tbc = combo[0].score
   for item in combo:
@@ -62,16 +66,21 @@ def handle_turn(stack: list, hand: list, player = False):
     selected = 0
     while tbp is None:
       try:
-        selected = int(input("Enter the index of the move you make: "))
+        selected = int(input("Enter the index of the move you make (or 'pass'): "))
         tbp = allowed[selected]
       except (ValueError, IndexError):
         print("Invalid selection")
         tbp = None
   else:
     random.shuffle(allowed)
-    tbp = allowed.pop()
+    # AI -- always choose the best move (lowest score) except on first round
+    if total_turns / num_players >= 1:
+      tbp = min(allowed)
+    else:
+      tbp = min([x for x in allowed if x[0].score != 2])
   print("This was played", tbp, "on", stack)
   stack += (tbp,)
+  # Clear the stack if a 2 was played.
   if tbp[0].rank == "2": stack = []
   hand = [card for card in hand if card not in tbp]
 
@@ -110,7 +119,6 @@ def four_of_a_kind(stack: list, hand: list):
 
 
 if __name__ == "__main__":
-  num_players = 5
   deck = [Card(rank, suit) for suit in suits for rank in ranks]
   random.shuffle(deck)
   stack = []
@@ -161,6 +169,7 @@ if __name__ == "__main__":
       i = (i - 1) % num_players
     else:
       i = (i + 1) % num_players
+    total_turns += 1
         
     
 
