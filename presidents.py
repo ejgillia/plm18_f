@@ -53,12 +53,23 @@ def handle_turn(stack: list, hand: list, player = False):
   if len(allowed) == 0:
     print("no moves")
     return [], hand, True
-
+  # The play that will be made.
+  tbp = None
   if player:
-    pass #handle all that delicious input
+    print("Your current hand is {}".format(hand))
+    for index, card in enumerate(allowed):
+      print("{} {}".format(index, card))
+    selected = 0
+    while tbp is None:
+      try:
+        selected = int(input("Enter the index of the move you make: "))
+        tbp = allowed[selected]
+      except (ValueError, IndexError):
+        print("Invalid selection")
+        tbp = None
   else:
     random.shuffle(allowed)
-  tbp = allowed.pop()
+    tbp = allowed.pop()
   print("This was played", tbp, "on", stack)
   stack += (tbp,)
   if tbp[0].rank == "2": stack = []
@@ -140,7 +151,7 @@ if __name__ == "__main__":
       stack = []
       continue
 
-    stack, hands[i], flag = handle_turn(stack, hands[i], player = False)
+    stack, hands[i], flag = handle_turn(stack, hands[i], player = (i == 0))
     if not hands[i]:
       print("We has a winner!")
       print("Player {}!".format(i))
