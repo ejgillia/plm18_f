@@ -56,10 +56,11 @@ def handle_turn(stack: list, hand: list, player = False):
   allowed = valid_moves(stack, hand)
   if len(allowed) == 0:
     print("no moves")
-    return [], hand, True
+    return [], hand, 0
   # The play that will be made.
   tbp = None
   if player:
+    print("Current stack is {}".format(stack))
     print("Your current hand is {}".format(hand))
     for index, card in enumerate(allowed):
       print("{} {}".format(index, card))
@@ -81,11 +82,14 @@ def handle_turn(stack: list, hand: list, player = False):
   print("This was played", tbp, "on", stack)
   stack += (tbp,)
   # Clear the stack if a 2 was played.
-  if tbp[0].rank == "2": stack = []
   hand = [card for card in hand if card not in tbp]
+  if tbp[0].rank == "2":
+    stack = []
+    return stack, hand, 2
 
 
-  return stack, hand, False
+
+  return stack, hand, 1
     
   
 
@@ -165,10 +169,11 @@ if __name__ == "__main__":
       print("Player {}!".format(i))
       break
 
-    if flag:
+    if flag == 0:
       i = (i - 1) % num_players
-    else:
+    elif flag == 1:
       i = (i + 1) % num_players
+
     total_turns += 1
         
     
