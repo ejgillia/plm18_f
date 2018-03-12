@@ -94,8 +94,7 @@ def handle_turn(stack: list, hand: list, player = False):
   
 
 def four_of_a_kind(stack: list, hand: list):
-  # god forgive me
-  # just believe me: this works
+ 
   # fenceposting
   if not stack: return False
   
@@ -115,7 +114,7 @@ def four_of_a_kind(stack: list, hand: list):
     stk = [card[0] for card in stack if card[0].score == stack[-1][0].score]
     stlol = [card for card in hand if card.score == stack[-1][0].score]
     if len(stk) + len(stlol) == 4:
-      print("yabba dabba ding dong")
+      #print("yabba dabba ding dong")
       return stk, True
   
   return False
@@ -139,33 +138,36 @@ if __name__ == "__main__":
         going = False
         break
   
-  # ldoifygp9e8tdfg 
-  # enjoy debugging THIs
+  
+  #number of the current player
   i = 0
+  #main game loop
   while True:
+    print("-----------------------------------")
     print("current player {}".format(i))
-    xd = False
-    puppies = -1
-    lejfg = []
+    
+    #set for finding out if can play four of a kind
+    set4 = -1
+    play = []
 
+    #finding out if there are 4 of a kind
     for a in range(num_players):
       b = four_of_a_kind(stack, hands[a])
       if b:
-        xd = True
-        puppies = a
-        lejfg = b[0]
+        set4 = a
+        play = b[0]
         break
     
-    if xd:
-      i = puppies
-      hands[puppies] = [card for card in hands[i] if card not in lejfg]
-      print("OOOOO BOY", puppies)
+    if set4 != -1:
+      i = set4
+      hands[set4] = [card for card in hands[i] if card not in play]
+      print("Player %d, played 4 of a kind" % (set4) )
       stack = []
       continue
 
     stack, hands[i], flag = handle_turn(stack, hands[i], player = (i == 0))
     if not hands[i]:
-      print("We has a winner!")
+      print("We have a winner!")
       print("Player {}!".format(i))
       break
 
