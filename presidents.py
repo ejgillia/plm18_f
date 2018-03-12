@@ -17,23 +17,41 @@ def same_score(combo: list) -> bool:
   
 
 
-def generate_moves(hand: list, num_cards_to_play: int, last_score: int) -> list:
-  if num_cards_to_play not in [1,2,3,4]:
-    raise ValueError("Not a valid input - num_cards_to_play not in [1,2,3]")
 
-  cleaned = [card for card in hand if card.score != 2]
-  tbr = []
-
-  for combo in itertools.combinations(cleaned, num_cards_to_play):
-    if same_score(combo) and combo[0].score >= last_score:
-      tbr.append(combo)
-  
-  return tbr
     
 
 def valid_moves(stack: list, hand: list) -> list:
-
-  valid = [(card,) for card in hand if card.score == 2]
+  #copying hand so changes do not affect actual hand
+  tmpHand = sorted(hand.copy())
+  #setting up sets of similar cards so that plays can be easily found
+  hand = [[tmpHand.pop()]]
+  while tmpHand:
+    card = tmpHand.pop()
+    if hand[-1][0].rank == card.rank:
+      hand[-1].append(card)
+    else:
+      hand.append([card])
+  
+  prevPlay = [] if not stack else stack[-1]
+  valid = []
+  for st in hand:
+    #looping over the sets of similar cards
+    if st[0].rank == '2':
+      [valid.append([card]) for card in st]
+    elif len(st) > len(prevPlay):
+      if not prevPlay or st[0] > prevPlay[0]:
+        [valid.append(st[0:i]) for i in range(len(prevPlay), len(st))]
+      valid.append(st)
+    elif len(st) == len(prevPlay) and st[0] > prevPlay[0]:
+      valid.append(st)
+  
+  #removing empty set if any where added
+  valid = [i for i in valid if i]
+  return valid
+  
+  
+  
+  
   
 
   if not stack:
