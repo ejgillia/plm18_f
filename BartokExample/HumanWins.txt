@@ -1,0 +1,432 @@
+---
+I am player 0
+Top Card 6 of H
+Your current hand is [A of H, 3 of H, 10 of C, 9 of C, 5 of H, 9 of S, 4 of H]
+Enter the index of the card you wish to play
+0 A of H
+1 3 of H
+2 5 of H
+3 4 of H
+Input number of card to play: 0
+A A of H was played
+---
+I am player 1
+Top Card A of H
+A A of D was played
+---
+I am player 2
+Top Card A of D
+A 3 of D was played
+---
+I am player 3
+Top Card 3 of D
+A 5 of D was played
+---
+I am player 4
+Top Card 5 of D
+A J of D was played
+---
+I am player 0
+Top Card J of D
+No moves available: Time to draw
+---
+I am player 1
+Top Card J of D
+A J of S was played
+---
+I am player 2
+Top Card J of S
+A 8 of S was played
+---
+I am player 3
+Top Card 8 of S
+A Q of S was played
+---
+I am player 4
+Top Card Q of S
+A 4 of S was played
+---
+I am player 0
+Top Card 4 of S
+Your current hand is [9 of S, 9 of C, 3 of H, 5 of H, 10 of C, 4 of H, 7 of C]
+Enter the index of the card you wish to play
+0 9 of S
+1 4 of H
+Input number of card to play: 0
+A 9 of S was played
+---
+I am player 1
+Top Card 9 of S
+A 5 of S was played
+---
+I am player 2
+Top Card 5 of S
+No moves available: Time to draw
+---
+I am player 3
+Top Card 5 of S
+A A of S was played
+---
+I am player 4
+Top Card A of S
+A 3 of S was played
+---
+I am player 0
+Top Card 3 of S
+Your current hand is [4 of H, 5 of H, 9 of C, 10 of C, 7 of C, 3 of H]
+Enter the index of the card you wish to play
+0 3 of H
+Input number of card to play: 0
+A 3 of H was played
+---
+I am player 1
+Top Card 3 of H
+A 8 of H was played
+---
+I am player 2
+Top Card 8 of H
+A 9 of H was played
+---
+I am player 3
+Top Card 9 of H
+No moves available: Time to draw
+---
+I am player 4
+Top Card 9 of H
+No moves available: Time to draw
+---
+I am player 0
+Top Card 9 of H
+Your current hand is [10 of C, 5 of H, 9 of C, 7 of C, 4 of H]
+Enter the index of the card you wish to play
+0 5 of H
+1 9 of C
+2 4 of H
+Input number of card to play: 0
+A 5 of H was played
+---
+I am player 1
+Top Card 5 of H
+No moves available: Time to draw
+---
+I am player 2
+Top Card 5 of H
+A 10 of H was played
+---
+I am player 3
+Top Card 10 of H
+No moves available: Time to draw
+---
+I am player 4
+Top Card 10 of H
+A J of H was played
+---
+I am player 0
+Top Card J of H
+Your current hand is [9 of C, 7 of C, 4 of H, 10 of C]
+Enter the index of the card you wish to play
+0 4 of H
+Input number of card to play: 0
+A 4 of H was played
+---
+I am player 1
+Top Card 4 of H
+No moves available: Time to draw
+---
+I am player 2
+Top Card 4 of H
+No moves available: Time to draw
+---
+I am player 3
+Top Card 4 of H
+No moves available: Time to draw
+---
+I am player 4
+Top Card 4 of H
+No moves available: Time to draw
+---
+I am player 0
+Top Card 4 of H
+No moves available: Time to draw
+---
+I am player 1
+Top Card 4 of H
+A 4 of D was played
+---
+I am player 2
+Top Card 4 of D
+A Q of D was played
+---
+I am player 3
+Top Card Q of D
+A Q of H was played
+---
+I am player 4
+Top Card Q of H
+No moves available: Time to draw
+---
+I am player 0
+Top Card Q of H
+No moves available: Time to draw
+---
+I am player 1
+Top Card Q of H
+No moves available: Time to draw
+---
+I am player 2
+Top Card Q of H
+No moves available: Time to draw
+---
+I am player 3
+Top Card Q of H
+A Q of C was played
+---
+I am player 4
+Top Card Q of C
+A J of C was played
+---
+I am player 0
+Top Card J of C
+Your current hand is [10 of C, 9 of C, 7 of C, 4 of C, 3 of C]
+Enter the index of the card you wish to play
+0 10 of C
+1 9 of C
+2 7 of C
+3 4 of C
+4 3 of C
+Input number of card to play: 0
+A 10 of C was played
+---
+I am player 1
+Top Card 10 of C
+A 2 of C was played
+---
+I am player 2
+Top Card 2 of C
+No moves available: Time to draw
+---
+I am player 3
+Top Card 2 of C
+A 6 of C was played
+---
+I am player 4
+Top Card 6 of C
+A K of C was played
+---
+I am player 0
+Top Card K of C
+Your current hand is [3 of C, 9 of C, 4 of C, 7 of C]
+Enter the index of the card you wish to play
+0 3 of C
+1 9 of C
+2 4 of C
+3 7 of C
+Input number of card to play: 0
+A 3 of C was played
+---
+I am player 1
+Top Card 3 of C
+No moves available: Time to draw
+---
+I am player 2
+A 2 of H was played
+---
+I am player 3
+Top Card 2 of H
+No moves available: Time to draw
+---
+I am player 4
+Top Card 2 of H
+A 7 of H was played
+---
+I am player 0
+Top Card 7 of H
+Your current hand is [7 of C, 4 of C, 9 of C]
+Enter the index of the card you wish to play
+0 7 of C
+Input number of card to play: 0
+A 7 of C was played
+---
+I am player 1
+Top Card 7 of C
+No moves available: Time to draw
+---
+I am player 2
+Top Card 7 of C
+No moves available: Time to draw
+---
+I am player 3
+Top Card 7 of C
+A 7 of S was played
+---
+I am player 4
+Top Card 7 of S
+A K of S was played
+---
+I am player 0
+Top Card K of S
+No moves available: Time to draw
+---
+I am player 1
+Top Card K of S
+A Q of S was played
+---
+I am player 2
+Top Card Q of S
+A 10 of S was played
+---
+I am player 3
+Top Card 10 of S
+No moves available: Time to draw
+---
+I am player 4
+Top Card 10 of S
+No moves available: Time to draw
+---
+I am player 0
+Top Card 10 of S
+No moves available: Time to draw
+---
+I am player 1
+Top Card 10 of S
+A 6 of S was played
+---
+I am player 2
+Top Card 6 of S
+A 6 of D was played
+---
+I am player 3
+Top Card 6 of D
+No moves available: Time to draw
+---
+I am player 4
+Top Card 6 of D
+A 7 of D was played
+---
+I am player 0
+Top Card 7 of D
+No moves available: Time to draw
+---
+I am player 1
+Top Card 7 of D
+A 2 of D was played
+---
+I am player 2
+Top Card 2 of D
+A 4 of D was played
+---
+I am player 3
+Top Card 4 of D
+No moves available: Time to draw
+---
+I am player 4
+Top Card 4 of D
+A 8 of D was played
+---
+I am player 0
+Top Card 8 of D
+Your current hand is [9 of C, 4 of C, 2 of C, A of S, A of D]
+Enter the index of the card you wish to play
+0 A of D
+Input number of card to play: 0
+A A of D was played
+---
+I am player 1
+Top Card A of D
+No moves available: Time to draw
+---
+I am player 2
+Top Card A of D
+A 9 of D was played
+---
+I am player 3
+Top Card 9 of D
+No moves available: Time to draw
+---
+I am player 4
+Top Card 9 of D
+No moves available: Time to draw
+---
+I am player 0
+Top Card 9 of D
+Your current hand is [9 of C, A of S, 4 of C, 2 of C]
+Enter the index of the card you wish to play
+0 9 of C
+Input number of card to play: 0
+A 9 of C was played
+---
+I am player 1
+Top Card 9 of C
+A 9 of H was played
+---
+I am player 2
+Top Card 9 of H
+No moves available: Time to draw
+---
+I am player 3
+Top Card 9 of H
+A 6 of H was played
+---
+I am player 4
+Top Card 6 of H
+A 4 of H was played
+---
+I am player 0
+Top Card 4 of H
+Your current hand is [4 of C, 2 of C, A of S]
+Enter the index of the card you wish to play
+0 4 of C
+Input number of card to play: 0
+A 4 of C was played
+---
+I am player 1
+Top Card 4 of C
+A J of C was played
+---
+I am player 2
+Top Card J of C
+A J of S was played
+---
+I am player 3
+Top Card J of S
+A 8 of S was played
+---
+I am player 4
+Top Card 8 of S
+No moves available: Time to draw
+---
+I am player 0
+Top Card 8 of S
+Your current hand is [2 of C, A of S]
+Enter the index of the card you wish to play
+0 A of S
+Input number of card to play: 0
+A A of S was played
+---
+I am player 1
+Top Card A of S
+A 2 of S was played
+---
+I am player 2
+Top Card 2 of S
+No moves available: Time to draw
+---
+I am player 3
+Top Card 2 of S
+No moves available: Time to draw
+---
+I am player 4
+Top Card 2 of S
+No moves available: Time to draw
+---
+I am player 0
+Top Card 2 of S
+Your current hand is [2 of C]
+Enter the index of the card you wish to play
+0 2 of C
+Input number of card to play: 0
+A 2 of C was played
+We have a winner! Player 0
+Human won
+End of program!
+

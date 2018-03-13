@@ -1,0 +1,162 @@
+---
+I am player 0
+Top Card 6 of C
+Your current hand is [2 of H, 10 of H, 10 of S, Q of D, Q of H, 8 of D, 7 of C]
+Enter the index of the card you wish to play
+0 7 of C
+Input number of card to play: 0
+A 7 of C was played
+---
+I am player 1
+Top Card 7 of C
+A A of C was played
+---
+I am player 2
+Top Card A of C
+A J of C was played
+---
+I am player 3
+Top Card J of C
+A 2 of C was played
+---
+I am player 4
+Top Card 2 of C
+No moves available: Time to draw
+---
+I am player 0
+Top Card 2 of C
+Your current hand is [10 of H, 8 of D, Q of H, 10 of S, 2 of H, Q of D]
+Enter the index of the card you wish to play
+0 2 of H
+Input number of card to play: 0
+A 2 of H was played
+---
+I am player 1
+Top Card 2 of H
+A 6 of H was played
+---
+I am player 2
+Top Card 6 of H
+A 4 of H was played
+---
+I am player 3
+Top Card 4 of H
+A A of H was played
+---
+I am player 4
+Top Card A of H
+A K of H was played
+---
+I am player 0
+Top Card K of H
+Your current hand is [8 of D, Q of H, 10 of S, 10 of H, Q of D]
+Enter the index of the card you wish to play
+0 Q of H
+1 10 of H
+Input number of card to play: 0
+A Q of H was played
+---
+I am player 1
+Top Card Q of H
+A 3 of H was played
+---
+I am player 2
+Top Card 3 of H
+A 8 of H was played
+---
+I am player 3
+Top Card 8 of H
+No moves available: Time to draw
+---
+I am player 4
+Top Card 8 of H
+A 8 of S was played
+---
+I am player 0
+Top Card 8 of S
+Your current hand is [8 of D, 10 of S, Q of D, 10 of H]
+Enter the index of the card you wish to play
+0 8 of D
+1 10 of S
+Input number of card to play: 0
+A 8 of D was played
+---
+I am player 1
+Top Card 8 of D
+A 7 of D was played
+---
+I am player 2
+Top Card 7 of D
+A 4 of D was played
+---
+I am player 3
+Top Card 4 of D
+A 2 of D was played
+---
+I am player 4
+Top Card 2 of D
+A 5 of D was played
+---
+I am player 0
+Top Card 5 of D
+Your current hand is [10 of H, 10 of S, Q of D]
+Enter the index of the card you wish to play
+0 Q of D
+Input number of card to play: 0
+A Q of D was played
+---
+I am player 1
+Top Card Q of D
+A Q of S was played
+---
+I am player 2
+Top Card Q of S
+A K of S was played
+---
+I am player 3
+Top Card K of S
+A A of S was played
+---
+I am player 4
+Top Card A of S
+A J of S was played
+---
+I am player 0
+Top Card J of S
+Your current hand is [10 of S, 10 of H]
+Enter the index of the card you wish to play
+0 10 of S
+Input number of card to play: 0
+A 10 of S was played
+---
+I am player 1
+Top Card 10 of S
+No moves available: Time to draw
+---
+I am player 2
+Top Card 10 of S
+A 6 of S was played
+---
+I am player 3
+Top Card 6 of S
+No moves available: Time to draw
+---
+I am player 4
+Top Card 6 of S
+A 5 of S was played
+---
+I am player 0
+Top Card 5 of S
+No moves available: Time to draw
+---
+I am player 1
+Top Card 5 of S
+No moves available: Time to draw
+---
+I am player 2
+Top Card 5 of S
+A 3 of S was played
+We have a winner! Player 2
+AI won
+End of program!
+

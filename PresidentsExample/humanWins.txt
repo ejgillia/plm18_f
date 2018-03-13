@@ -1,0 +1,161 @@
+-----------------------------------
+current player 0
+Current stack is []
+Your current hand is [9 of S, 10 of H, 3 of H, 9 of D, Q of C, 7 of D, 10 of D, A of S, A of C, 5 of S, 2 of H]
+0 [A of C]
+1 [A of C, A of S]
+2 [Q of C]
+3 [10 of D]
+4 [10 of D, 10 of H]
+5 [9 of D]
+6 [9 of D, 9 of S]
+7 [7 of D]
+8 [5 of S]
+9 [3 of H]
+10 [2 of H]
+Enter the index of the move you make (or -1 to pass): 9
+This was played [3 of H] on []
+-----------------------------------
+current player 1
+This was played [4 of C] on [[3 of H]]
+-----------------------------------
+current player 2
+This was played [6 of C] on [[3 of H], [4 of C]]
+-----------------------------------
+current player 3
+This was played [7 of C] on [[3 of H], [4 of C], [6 of C]]
+-----------------------------------
+current player 4
+This was played [9 of H] on [[3 of H], [4 of C], [6 of C], [7 of C]]
+-----------------------------------
+current player 0
+Current stack is [[3 of H], [4 of C], [6 of C], [7 of C], [9 of H]]
+Your current hand is [9 of S, 10 of H, 9 of D, Q of C, 7 of D, 10 of D, A of S, A of C, 5 of S, 2 of H]
+0 [A of C]
+1 [A of C, A of S]
+2 [Q of C]
+3 [10 of D]
+4 [10 of D, 10 of H]
+5 [9 of D, 9 of S]
+6 [2 of H]
+Enter the index of the move you make (or -1 to pass): 2
+This was played [Q of C] on [[3 of H], [4 of C], [6 of C], [7 of C], [9 of H]]
+-----------------------------------
+current player 1
+This was played [2 of S] on [[3 of H], [4 of C], [6 of C], [7 of C], [9 of H], [Q of C]]
+-----------------------------------
+current player 1
+This was played [2 of D] on []
+-----------------------------------
+current player 1
+This was played [3 of D] on []
+-----------------------------------
+current player 2
+This was played [2 of C] on [[3 of D]]
+-----------------------------------
+current player 2
+This was played [3 of C] on []
+-----------------------------------
+current player 3
+This was played [4 of S] on [[3 of C]]
+-----------------------------------
+current player 4
+This was played [5 of C] on [[3 of C], [4 of S]]
+-----------------------------------
+current player 0
+Current stack is [[3 of C], [4 of S], [5 of C]]
+Your current hand is [9 of S, 10 of H, 9 of D, 7 of D, 10 of D, A of S, A of C, 5 of S, 2 of H]
+0 [A of C]
+1 [A of C, A of S]
+2 [10 of D]
+3 [10 of D, 10 of H]
+4 [9 of D]
+5 [9 of D, 9 of S]
+6 [7 of D]
+7 [2 of H]
+Enter the index of the move you make (or -1 to pass): 6
+This was played [7 of D] on [[3 of C], [4 of S], [5 of C]]
+-----------------------------------
+current player 1
+This was played [6 of S, 6 of D] on [[3 of C], [4 of S], [5 of C], [7 of D]]
+-----------------------------------
+current player 2
+This was played [J of C, J of S] on [[3 of C], [4 of S], [5 of C], [7 of D], [6 of S, 6 of D]]
+-----------------------------------
+current player 3
+This was played [8 of S, 8 of H, 8 of C] on [[3 of C], [4 of S], [5 of C], [7 of D], [6 of S, 6 of D], [J of C, J of S]]
+-----------------------------------
+Player 1, played 4 of a kind
+[8 of D]
+-----------------------------------
+current player 1
+This was played [5 of D] on []
+-----------------------------------
+current player 2
+This was played [J of H] on [[5 of D]]
+-----------------------------------
+current player 3
+This was played [Q of D] on [[5 of D], [J of H]]
+-----------------------------------
+current player 4
+This was played [K of C] on [[5 of D], [J of H], [Q of D]]
+-----------------------------------
+current player 0
+Current stack is [[5 of D], [J of H], [Q of D], [K of C]]
+Your current hand is [9 of S, 10 of H, 9 of D, 10 of D, A of S, A of C, 5 of S, 2 of H]
+0 [A of C]
+1 [A of C, A of S]
+2 [10 of D, 10 of H]
+3 [9 of D, 9 of S]
+4 [2 of H]
+Enter the index of the move you make (or -1 to pass): 1
+This was played [A of C, A of S] on [[5 of D], [J of H], [Q of D], [K of C]]
+-----------------------------------
+current player 1
+no moves
+-----------------------------------
+current player 0
+Current stack is []
+Your current hand is [9 of S, 10 of H, 9 of D, 10 of D, 5 of S, 2 of H]
+0 [10 of D]
+1 [10 of D, 10 of H]
+2 [9 of D]
+3 [9 of D, 9 of S]
+4 [5 of S]
+5 [2 of H]
+Enter the index of the move you make (or -1 to pass): 1
+This was played [10 of D, 10 of H] on []
+-----------------------------------
+current player 1
+no moves
+-----------------------------------
+current player 0
+Current stack is []
+Your current hand is [9 of S, 9 of D, 5 of S, 2 of H]
+0 [9 of D]
+1 [9 of D, 9 of S]
+2 [5 of S]
+3 [2 of H]
+Enter the index of the move you make (or -1 to pass): 1
+This was played [9 of D, 9 of S] on []
+-----------------------------------
+current player 1
+no moves
+-----------------------------------
+current player 0
+Current stack is []
+Your current hand is [5 of S, 2 of H]
+0 [5 of S]
+1 [2 of H]
+Enter the index of the move you make (or -1 to pass): 1
+This was played [2 of H] on []
+-----------------------------------
+current player 0
+Current stack is []
+Your current hand is [5 of S]
+0 [5 of S]
+Enter the index of the move you make (or -1 to pass): 0
+This was played [5 of S] on []
+We have a winner!
+Player 0!
+
