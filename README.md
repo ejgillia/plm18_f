@@ -10,18 +10,18 @@ Gilliam, Edward
 Our project consist of making the following card games:
 
 	Bartok
-		played by using the command 
+        example gameplay can be found in the BartokExample directory
+		played by using the command:
 ```python
 python3 bartok.py
 ```
-		example gameplay can be found in the BartokExample directory
 	
 	Presidents
-		played by using the command 
+        example gameplay can be found in the PresidentsExample directory
+		played by using the command:
 ```python
 python3 presidents.py
 ```
-		example gameplay can be found in the PresidentsExample directory
 
 Both games have built-in AI and are set up for a single human user. 
 In addition, both games print out available plays to the human user so that beginners can easily play the game. 
