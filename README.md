@@ -11,16 +11,16 @@ Our project consist of making the following card games:
 
 	Bartok
 		played by using the command 
-        ```
-        python3 bartok.py
-        ```
+```python
+python3 bartok.py
+```
 		example gameplay can be found in the BartokExample directory
 	
 	Presidents
 		played by using the command 
-        ```
-        python3 presidents.py
-        ```
+```python
+python3 presidents.py
+```
 		example gameplay can be found in the PresidentsExample directory
 
 Both games have built-in AI and are set up for a single human user. 
