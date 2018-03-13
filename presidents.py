@@ -85,8 +85,8 @@ def handle_turn(stack: list, hand: list, player = False):
     selected = 0
     while tbp is None:
       try:
-        selected = int(input("Enter the index of the move you make (or 'pass'): "))
-        tbp = allowed[selected]
+        selected = int(input("Enter the index of the move you make (or -1 to pass): "))
+        tbp = allowed[selected] if selected >= 0 else []
       except (ValueError, IndexError):
         print("Invalid selection")
         tbp = None
@@ -96,14 +96,22 @@ def handle_turn(stack: list, hand: list, player = False):
     if total_turns / num_players >= 1:
       tbp = min(allowed)
     else:
-      tbp = min([x for x in allowed if x[0].score != 2])
+      pos = [x for x in allowed if x[0].score != 2]
+      if pos:
+        tbp = min([x for x in allowed if x[0].score != 2])
+      else:
+        tbp = allowed[0]
   print("This was played", tbp, "on", stack)
   stack += (tbp,)
   # Clear the stack if a 2 was played.
   hand = [card for card in hand if card not in tbp]
-  if tbp[0].rank == "2":
+  if tbp and tbp[0].rank == "2":
     stack = []
     return stack, hand, 2
+  
+  if not tbp:
+    stack = []
+    return stack, hand, 0
 
 
 
@@ -161,8 +169,7 @@ if __name__ == "__main__":
   i = 0
   #main game loop
   while True:
-    print("-----------------------------------")
-    print("current player {}".format(i))
+    
     
     #set for finding out if can play four of a kind
     set4 = -1
@@ -179,10 +186,14 @@ if __name__ == "__main__":
     if set4 != -1:
       i = set4
       hands[set4] = [card for card in hands[i] if card not in play]
+      print("-----------------------------------")
       print("Player %d, played 4 of a kind" % (set4) )
+      print(play)
       stack = []
       continue
 
+    print("-----------------------------------")
+    print("current player {}".format(i))
     stack, hands[i], flag = handle_turn(stack, hands[i], player = (i == 0))
     if not hands[i]:
       print("We have a winner!")
