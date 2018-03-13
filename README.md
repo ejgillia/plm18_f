@@ -8,6 +8,7 @@ Jones, Kenny
 Gilliam,Edward
 
 our project consist of making the following card games:
+
 	bartok
 		played by using the command python3 bartok.py
 		example gameplay can be found in the BartokExample directory
