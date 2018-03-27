@@ -14,14 +14,17 @@ class Game(object):
     numPlayers = the total number of  human players
     numAI = the number of the total players that are AI
     """
+    self.totPlayers = numPlayers + numAI
     #checking that there are atleast 2 players
-    if (numPlayers + numAI) < 2:
+    if (self.totPlayers) < 2:
       raise Exception('need atleast 2 players to play the game')
     
     self.deck = Deck()
     
     self.numPlayers = numPlayers
     self.numAI = numAI
+    
+    self.winner = []
     
     #setting up the players
     self.players = []
