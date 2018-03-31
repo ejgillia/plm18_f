@@ -1,18 +1,12 @@
 from Game import Game
+from Game import group
 
 class Presidents(Game):
   
   def endCondition(self):
     for player in self.players:
       if player.noCardsLeft() and player not in self.winner:
-        print("Player is done")
-        print(player)
-        #removing player from game
-        next = player.next
-        prev = player.prev
-        prev.next = next
-        next.prev = prev
-        
+        player.remove()  
         self.winner.append(player)
     return len(self.winner) == len(self.players)
   
@@ -27,31 +21,14 @@ class Presidents(Game):
     
     print('last played')
     print(lastPlayed)
-    
-    #copying hand so changes do not affect actual hand
-    tmpHand = sorted(hand.copy())
- 
-    #setting up to group cards based on their rank, to make it easer to find valid plays
-    hand = []
-    card = tmpHand.pop()
-    currentRank = card.rank
-    currentSet = [card]
-    while tmpHand:
-      card = tmpHand.pop()
-      if card.rank == currentRank:
-        currentSet.append(card)
-      else:
-        hand.append(currentSet)
-        currentRank = card.rank
-        currentSet = [card]
-    hand.append(currentSet)
-    
+    if lastPlayed and (lastPlayed[0].rank == '2' or len(lastPlayed) == 4):
+      lastPlayed = []
+    hand = group(hand, lambda card: card.rank)
     
     #setting up the valid plays
     valid = []
     prevLen = len(lastPlayed)
-    if lastPlayed:
-      prevCard = lastPlayed[0]
+    prevCard = lastPlayed[0] if lastPlayed else None
     for cardSet in hand:
       setLen = len(cardSet)
       setCard = cardSet[0]
@@ -64,15 +41,27 @@ class Presidents(Game):
     valid = [cardSet for cardSet in valid if cardSet]
     return valid
 
+  def outOfTurnPlay(self, lastPlayer, lastPlayed):
+    if not lastPlayed:
+      return lastPlayer
+      
+    for player in self.players:
+      if player.noCardsLeft():
+        continue
+      cardSets = group(player.hand, lambda card: card.rank)
+      for play in cardSets:
+        if play[0].rank == lastPlayed[0].rank and (len(play) + len(lastPlayed)) == 4:
+          lastPlayed += play
+          return player
+      
+    return lastPlayer
   
   def cantPlay(self, player):
     self.played.append([])
     return player.prev
   
-  def playerPlayed(self, player, played):
-    
+  def playerPlayed(self, player, played): 
     if played[0].rank == '2':
-      self.played.append([])
       return player
     
     self.played.append(played)

@@ -74,6 +74,12 @@ class Player(object):
   
   def noCardsLeft(self):
     return len(self.hand) == 0
+  
+  def remove(self):
+    print("Player %s is done playing" % (str(self.idNum)))
+    self.next.prev = self.prev
+    self.prev.next = self.next
+    
     
 
   def __repr__(self):

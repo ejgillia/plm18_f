@@ -15,8 +15,6 @@ class Bartok(Game):
   
   def validPlays(self, hand, lastPlayed):
     validPlays = []
-    #print (hand)
-    #print (lastPlayed)
     if lastPlayed:
       for card in hand:
         if card.rank == lastPlayed.rank or card.suit == lastPlayed.suit:
@@ -30,7 +28,6 @@ class Bartok(Game):
     return player.next
   
   def playerPlayed(self, player, played):
-    self.played.append(played)
     return player.next
   
   def dealHands(self):

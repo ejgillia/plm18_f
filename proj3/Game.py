@@ -1,6 +1,7 @@
 from Player import Player
 from Deck import Deck
 from Card import Card
+from Utilities import *
 """
 games need to define validPlays, cantPlay, getNext, distribute cards, winCondition, and winMessage
 """
@@ -43,7 +44,9 @@ class Game(object):
       print("--------------------------------------")
       print("It is player " + str(player.idNum) + " turn")
       played = player.play(self.played[-1])
+      if played: self.played.append(played)
       player = self.playerPlayed(player, played) if played else self.cantPlay(player)
+      player = self.outOfTurnPlay(player, played)
     
     self.winMessage()
   
@@ -77,6 +80,9 @@ class Game(object):
   
   def winMessage(self):
     raise Exception("implementation must define this")
+  
+  def outOfTurnPlay(self, lastPlayer, lastPlayed):
+    return lastPlayer
       
       
   

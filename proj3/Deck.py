@@ -5,7 +5,7 @@ class Deck(object):
 
   def __init__(self):
     self.cards = [Card(rank, suit) for suit in suits for rank in ranks]
-    self.cards = self.cards[0:30]
+    self.cards = self.cards
     self.shuffle()
   
   def shuffle(self, seed = 10 ):
