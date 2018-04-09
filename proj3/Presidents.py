@@ -33,18 +33,16 @@ class Presidents(Game):
       setLen = len(cardSet)
       setCard = cardSet[0]
       if setCard.rank == '2':
-        [valid.append([card]) for card in cardSet]
+        valid.append(cardSet)
       elif setLen > prevLen:
-        [valid.append(cardSet[0:i]) for i in range(prevLen, setLen + 1)]
+        valid.append(cardSet)
       elif setLen == prevLen and setCard > prevCard:
         valid.append(cardSet)
-    valid = [cardSet for cardSet in valid if cardSet]
     return valid
 
   def outOfTurnPlay(self, lastPlayer, lastPlayed):
     if not lastPlayed:
       return lastPlayer
-      
     for player in self.players:
       if player.noCardsLeft():
         continue
@@ -75,6 +73,6 @@ class Presidents(Game):
       
 
       
-Presidents(numPlayers = 1, numAI = 3).play()   
+Presidents(numPlayers = 0, numAI = 5).play()   
   
   
