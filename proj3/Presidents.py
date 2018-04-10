@@ -1,78 +1,86 @@
-from Game import Game
-from Game import group
+from GameRules import GameRules
+from Utilities import *
 
-class Presidents(Game):
-  
-  def endCondition(self):
-    for player in self.players:
-      if player.noCardsLeft() and player not in self.winner:
-        player.remove()  
-        self.winner.append(player)
-    return len(self.winner) == len(self.players)
-  
-  def winMessage(self):
-    print("The winner of presidents is: ")
-    place = 0
-    for player in self.winner:
-      place += 1
-      print("%dst %s"% ( place, player.idNum))
-  
-  def validPlays(self, hand, lastPlayed):
-    
-    print('last played')
-    print(lastPlayed)
-    if lastPlayed and (lastPlayed[0].rank == '2' or len(lastPlayed) == 4):
-      lastPlayed = []
-    hand = group(hand, lambda card: card.rank)
-    
-    #setting up the valid plays
-    valid = []
-    prevLen = len(lastPlayed)
-    prevCard = lastPlayed[0] if lastPlayed else None
-    for cardSet in hand:
-      setLen = len(cardSet)
-      setCard = cardSet[0]
-      if setCard.rank == '2':
-        valid.append(cardSet)
-      elif setLen > prevLen:
-        valid.append(cardSet)
-      elif setLen == prevLen and setCard > prevCard:
-        valid.append(cardSet)
-    return valid
+"""
+defining rule for preprocessing hand
+"""
+def preproHand(hand):
+  return groupCards(hand, lambda card: card.rank)
 
-  def outOfTurnPlay(self, lastPlayer, lastPlayed):
-    if not lastPlayed:
-      return lastPlayer
-    for player in self.players:
-      if player.noCardsLeft():
-        continue
-      cardSets = group(player.hand, lambda card: card.rank)
-      for play in cardSets:
-        if play[0].rank == lastPlayed[0].rank and (len(play) + len(lastPlayed)) == 4:
-          lastPlayed += play
-          return player
-      
-    return lastPlayer
-  
-  def cantPlay(self, player):
-    self.played.append([])
-    return player.prev
-  
-  def playerPlayed(self, player, played): 
-    if played[0].rank == '2':
-      return player
-    
-    self.played.append(played)
-    return player.next
-  
-  def dealHands(self):
-    count = 0
-    while self.deck.cardsLeft():
-      self.players[count % self.totPlayers].drawCard()
-      count +=1
-      
+"""
+defining the valid play rules
+if a rule returns true
+the play is valid
+"""
+def setOf4Rule(prevPlay, cardSet):
+  return len(prevPlay) == 4
 
+def rankOf2Rule(prevPlay, cardSet):
+  return cardSet[0].rank == '2'
+
+def biggerSetRule(prevPlay, cardSet):
+  return len(cardSet) > len(prevPlay)
+
+def sameSizeHigherRankRule(prevPlay, cardSet):
+  return len(prevPlay) == len(cardSet) and prevPlay and cardSet[0] > prevPlay[0]    
+
+
+"""
+defining the valid out of turn plays rule
+"""
+def outOfTurnPlayRule(lastPlayed, cardSet):
+  return setOf4(lastPlayed, cardSet) if lastPlayed else False
+
+ 
+"""
+ defining rule for when player can't play
+""" 
+def cantPlayRule(game, player):
+  game.played.append([])
+  return player.prev
+
+"""
+defining rules for what to do based on what a player played
+"""
+def playerPlayedA2Rule(player, played):
+  return player, played[0].rank == '2'
+
+def playerPlayedRegRule(player, played):
+  return player.next, True
+
+
+"""
+defining rule for dealing hands
+"""
+def dealHandRule(deck, players):
+  count = 0
+  numPlayers = len(players)
+  while deck.cardsLeft():
+    players[count % numPlayers].drawCard()
+    count+= 1
+  return deck, players
+    
+"""
+defining rule for ending the game
+"""    
+def endGameRule(game):
+  for player in game.players:
+    if player.noCardsLeft() and player not in game.winners:
+      player.remove()
+      game.winners.append(player)
+  return len(game.winners) == len(game.players)
       
-Presidents(numPlayers = 0, numAI = 5).play()   
+  
+  
+GameRules(numPlayers = 1, 
+          numAI = 3,
+          gameName = "presidents",
+          preprocessHand = preproHand,
+          validPlayRules = [setOf4Rule, rankOf2Rule, biggerSetRule, sameSizeHigherRankRule],
+          outOfTurnPlayRules = [outOfTurnPlayRule],
+          playerPlayedRules = [playerPlayedA2Rule, playerPlayedRegRule],
+          cantPlayRule = cantPlayRule,
+          endGameRule = endGameRule,
+          dealHandsRule = dealHandRule).play()
   
   
