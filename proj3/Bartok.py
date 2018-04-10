@@ -1,41 +1,68 @@
-from Game import Game
+from GameRules import GameRules
+from Utilities import *
 
-class Bartok(Game):
-  
-  def endCondition(self):
-    for player in self.players:
-      if player.noCardsLeft():
-        self.winner = player
-        return True
-    return False
-  
-  def winMessage(self):
-    print("The winner of bartok is: ")
-    print(self.winner)
-  
-  def validPlays(self, hand, lastPlayed):
-    validPlays = []
-    if lastPlayed:
-      for card in hand:
-        if card.rank == lastPlayed.rank or card.suit == lastPlayed.suit:
-          validPlays.append(card)
-    else:
-      validPlays += hand
-    return validPlays
-  
-  def cantPlay(self, player):
-    player.drawCard()
-    return player.next
-  
-  def playerPlayed(self, player, played):
-    return player.next
-  
-  def dealHands(self):
-    self.deck.shuffle()
-    for player in self.players:
-      player.hand = self.deck.draw(7)
+"""
+defining rule for preprocessing hand
+"""
+def preproHand(hand):
+  return hand
 
+"""
+defining the valid play rules
+if a rule returns true
+the play is valid
+"""
+def sameRankRule(prevPlay, card):
+  return prevPlay.rank == card.rank if prevPlay else True
+
+def sameSuitRule(prevPlay, card):
+  return prevPlay.suit == card.suit if prevPlay else True
+
+
+ 
+"""
+ defining rule for when player can't play
+""" 
+def cantPlayRule(game, player):
+  player.drawCard()
+  return player
+
+"""
+defining rules for what to do based on what a player played
+"""
+def playerPlayedRegRule(player, played):
+  return player.next, True
+
+
+"""
+defining rule for dealing hands
+"""
+def dealHandRule(deck, players):
+  for player in players:
+    [player.drawCard() for i in range(7)]
+  return deck, players
+    
+"""
+defining rule for ending the game
+"""    
+def endGameRule(game):
+  for player in game.players:
+    if player.noCardsLeft() and player not in game.winners:
+      player.remove()
+      game.winners.append(player)
+  return len(game.winners)
       
-Bartok(numPlayers = 1, numAI = 3).play()   
+  
+  
+GameRules(numPlayers = 1, 
+          numAI = 3,
+          gameName = "bartok",
+          preprocessHand = preproHand,
+          validPlayRules = [sameRankRule, sameSuitRule],
+          outOfTurnPlayRules = [],
+          playerPlayedRules = [playerPlayedRegRule],
+          cantPlayRule = cantPlayRule,
+          endGameRule = endGameRule,
+          dealHandsRule = dealHandRule).play()
   
   
