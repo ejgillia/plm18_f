@@ -1,4 +1,4 @@
-def group(cards, strat):
+def groupCards(cards, strat):
         if not cards:
           return cards
         cards = cards.copy()
@@ -16,3 +16,5 @@ def group(cards, strat):
                         cards.append([card])
         return cards
 
+def setOf4(lastPlayed, play):
+  return play[0].rank == lastPlayed[0].rank and (len(play) + len(lastPlayed)) == 4

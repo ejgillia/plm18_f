@@ -25,7 +25,7 @@ class Game(object):
     self.numPlayers = numPlayers
     self.numAI = numAI
     
-    self.winner = []
+    self.winners = []
     
     #setting up the players
     self.players = []
